@@ -13,7 +13,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return 'Hello Laravel!';
+        return 'Put Line Login Button Here';
     }
 
     /**
@@ -34,7 +34,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**

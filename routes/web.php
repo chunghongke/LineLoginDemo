@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('lineLogin', 'LoginController@index')->name('lineLogin');
+Route::prefix('line')->group(function () {
+    Route::get('page', 'LoginController@index');
+    Route::post('login', 'LoginController@store');
+});
