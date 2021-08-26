@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +18,8 @@ Route::get('/', function () {
 });
 
 Route::prefix('line')->group(function () {
-    Route::get('page', 'LoginController@index');
+    Route::get('page', function () {
+        return view('line');
+    });
     Route::post('login', 'LoginController@store');
 });

@@ -13,7 +13,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return 'Put Line Login Button Here';
+        //
     }
 
     /**
