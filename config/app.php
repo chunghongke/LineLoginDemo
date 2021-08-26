@@ -123,6 +123,14 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    /**
+     * Line Login相關
+     */
+    'line_channel_id' => env('LINE_CHANNEL_ID'),
+    'line_channel_secret' => env('LINE_CHANNEL_SECRET'),
+    'line_authorize_url' => env('LINE_AUTHORIZE_URL'),
+    'line_token_url' => env('LINE_TOKEN_URL'),
+    'line_user_profile_url' => env('LINE_USER_PROFILE_URL'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
