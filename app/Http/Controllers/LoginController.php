@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Services\LineService;
 
 class LoginController extends Controller
 {
+    protected $lineService;
+
+    public function __construct(LineService $lineService)
+    {
+        $this->lineService = $lineService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,19 +22,9 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        $url = $this->lineService->getLineLoginBaseUrl();
+        return view('line')->with('url', $url);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -38,50 +36,5 @@ class LoginController extends Controller
         $client = new Client();
         $response = $client->request('GET', 'http://10.152.161.247:8080/profile/2687082858473966');
         return $response->getBody()->getContents();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -16,7 +16,7 @@
         <h1 class="text-center display-3">Laravel Demo</h1>
         <form class="form-signin">
             <div class="text-center mb-4">
-                <a href="/"><img alt="login_button" class="mb-4" src="/images/line/btn_login_base.png"></a>
+                <a href="{{ $url }}"><img alt="login_button" class="mb-4" src="/images/line/btn_login_base.png"></a>
             </div>
         </form>
         <footer class="footer">

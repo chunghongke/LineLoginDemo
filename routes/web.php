@@ -18,8 +18,6 @@ Route::get('/', function () {
 });
 
 Route::prefix('line')->group(function () {
-    Route::get('page', function () {
-        return view('line');
-    });
+    Route::get('/', 'LoginController@index');
     Route::post('login', 'LoginController@store');
 });
