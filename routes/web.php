@@ -21,3 +21,5 @@ Route::prefix('line')->group(function () {
     Route::get('/', 'LoginController@index');
     Route::get('callback', 'LoginController@lineLoginCallBack');
 });
+
+Route::get('user', 'UserController@index')->name('user');
