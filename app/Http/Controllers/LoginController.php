@@ -41,7 +41,7 @@ class LoginController extends Controller
             }
             $code = $request->input('code', '');
             $response = $this->lineService->getToken($code);
-            $user_profile = json_decode($this->lineService->getUserProfile($response['access_token']));
+            $user_profile = json_decode($this->lineService->getUserProfile($response['access_token']), true);
             return view('line-login-success')->with(['displayName' => $user_profile['displayName'], 'pictureUrl' => $user_profile['pictureUrl']]);
         } catch (Exception $ex) {
             Log::error($ex);
