@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Services\LineService;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -22,7 +24,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $url = $this->lineService->getLineLoginBaseUrl();
+        $url = $this->lineService->getLoginBaseUrl();
         return view('line')->with('url', $url);
     }
     /**
@@ -36,5 +38,25 @@ class LoginController extends Controller
         $client = new Client();
         $response = $client->request('GET', 'http://10.152.161.247:8080/profile/2687082858473966');
         return $response->getBody()->getContents();
+    }
+
+    /**
+     * 使用者登入Line，LINE Platform會呼叫的callback
+     * (通常需驗證web app傳送過去的state才接受回傳的資料)
+     */
+    public function lineLoginCallBack(Request $request)
+    {
+        try {
+            $error = $request->input('error', false);
+            if ($error) {
+                throw new Exception($error);
+            }
+            $code = $request->input('code', '');
+            $response = $this->lineService->getToken($code);
+            $user_profile = json_decode($this->lineService->getUserProfile($response['access_token']));
+            return view('line-login-success')->with(['displayName' => $user_profile['displayName'], 'pictureUrl' => $user_profile['pictureUrl']]);
+        } catch (Exception $ex) {
+            Log::error($ex);
+        }
     }
 }
