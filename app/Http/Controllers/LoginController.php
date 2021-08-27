@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class LoginController extends Controller
 {
@@ -34,7 +35,9 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $client = new Client();
+        $response = $client->request('GET', 'http://10.152.161.247:8080/profile/2687082858473966');
+        return $response->getBody()->getContents();
     }
 
     /**
