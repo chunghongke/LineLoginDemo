@@ -19,6 +19,5 @@ Route::get('/', function () {
 
 Route::prefix('line')->group(function () {
     Route::get('/', 'LoginController@index');
-    Route::post('login', 'LoginController@store');
     Route::get('callback', 'LoginController@lineLoginCallBack');
 });

@@ -27,18 +27,6 @@ class LoginController extends Controller
         $url = $this->lineService->getLoginBaseUrl();
         return view('line')->with('url', $url);
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $client = new Client();
-        $response = $client->request('GET', 'http://10.152.161.247:8080/profile/2687082858473966');
-        return $response->getBody()->getContents();
-    }
 
     /**
      * 使用者登入Line，LINE Platform會呼叫的callback
