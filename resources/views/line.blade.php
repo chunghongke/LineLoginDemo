@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>Line Login Demo</title>
-
+    <link rel="icon" href="/images/line/LINE_Brand_icon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/line/LINE_Brand_icon.ico" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
     <link href="https://bootstrap.hexschool.com/docs/4.2/dist/css/bootstrap.css" rel="stylesheet">
 
