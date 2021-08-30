@@ -12,7 +12,7 @@ class LineService
         $url = config('app.line_authorize_url') . '?';
         $url .= 'response_type=code';
         $url .= '&client_id=' . config('app.line_channel_id');
-        $url .= '&redirect_uri=' . config('app.url') . ':3000/line/callback';
+        $url .= '&redirect_uri=' . config('app.line_redirect_url');
         $url .= '&state=test'; // 暫時固定方便測試
         $url .= '&scope=openid%20profile';
 
@@ -26,7 +26,7 @@ class LineService
             'form_params' => [
                 'grant_type' => 'authorization_code',
                 'code' => $code,
-                'redirect_uri' => config('app.url') . ':3000/line/callback',
+                'redirect_uri' => config('app.line_redirect_url'),
                 'client_id' => config('app.line_channel_id'),
                 'client_secret' => config('app.line_channel_secret')
             ]

@@ -131,6 +131,7 @@ return [
     'line_authorize_url' => env('LINE_AUTHORIZE_URL'),
     'line_token_url' => env('LINE_TOKEN_URL'),
     'line_user_profile_url' => env('LINE_USER_PROFILE_URL'),
+    'line_redirect_url' => env('LIEN_REDIRECT_URL'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
